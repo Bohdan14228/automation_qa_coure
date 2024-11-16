@@ -8,4 +8,12 @@ class TextBoxPageLocators:
     CREATED_FULL_NAME = ('css selector', "#output #name")
     CREATED_EMAIL = ('css selector', "#output #email")
     CREATED_CURRENT_ADDRESS = ('css selector', "#output #currentAddress")
-    CREATED_PERMANENT_ADDRESS = ('css selector', "input[id='permanentAddress']")
+    CREATED_PERMANENT_ADDRESS = ('css selector', "#output #permanentAddress")
+
+
+class CheckBoxLocators:
+    EXPAND_ALL_BUTTON = ('css selector', "button[title='Expand all']")
+    ITEM_LIST = ("css selector", "span[class='rct-title']")
+    CHECKED_ITEMS = ('css selector', "svg[class='rct-icon rct-icon-check]")
+
+    #2:12:30

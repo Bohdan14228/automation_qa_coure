@@ -29,7 +29,7 @@ class BasePage:
         return wait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
     def go_to_element(self, element):
-        self.driver.execute_script('return arguments[0].scrollIntoView(true);', element)
+        self.driver.execute_script('arguments[0].scrollIntoView();', element)
 
     def go_to_element_2(self, element):
         self.driver.execute_script('window.scrollBy(0,1500)', element)
