@@ -33,3 +33,4 @@ class BasePage:
 
     def go_to_element_2(self, element):
         self.driver.execute_script('window.scrollBy(0,1500)', element)
+
