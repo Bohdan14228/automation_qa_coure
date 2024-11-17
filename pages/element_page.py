@@ -1,6 +1,6 @@
 import random
 
-from locators.elements_page_locator import TextBoxPageLocators, CheckBoxLocators
+from locators.elements_page_locator import *
 from pages.base_page import BasePage
 from generator.generator import generated_person
 
@@ -71,3 +71,46 @@ class CheckBoxPage(BasePage):
         for item in result_list:
             data.append(item.text)
         return str(data).replace(' ', '').lower()
+
+
+class RadioButtonPage(BasePage):
+    locators = RadioButtonLocator()
+
+    def click_on_the_radio_button(self, choice):
+        choices = {
+            'yes': self.locators.BUTTON_YES,
+            'impressive': self.locators.BUTTON_IMPRESSIVE,
+            'no': self.locators.BUTTON_NO
+        }
+        select_item = self.element_is_clickable(choices[choice])
+        select_item.click()
+        return select_item.text
+
+    def read_selected(self):
+        selected_item = self.element_is_visible(self.locators.SELECTED_BUTTON)
+        return selected_item.text
+
+
+class WebTablePage(BasePage):
+    locators = WebTableLocator()
+
+    def add_new_person(self,):
+        count = 1
+        while count != 0:
+            person_info = next(generated_person())
+            firstname = person_info.firstname
+            lastname = person_info.lastname
+            email = person_info.email
+            age = person_info.age
+            salary = person_info.salary
+            department = person_info.department
+            self.element_is_visible(self.locators.ADD_BUTTON).click()
+            self.element_is_visible(self.locators.FIRSTNAME_INPUT).send_keys(firstname)
+            self.element_is_visible(self.locators.LASTNAME_INPUT).send_keys(lastname)
+            self.element_is_visible(self.locators.EMAIL_INPUT).send_keys(email)
+            self.element_is_visible(self.locators.AGE_INPUT).send_keys(age)
+            self.element_is_visible(self.locators.SALARY_INPUT).send_keys(salary)
+            self.element_is_visible(self.locators.DEPARTMENT_INPUT).send_keys(department)
+            self.element_is_visible(self.locators.SUBMIT).click()
+            count -= 1
+            return firstname, lastname, email, age, salary, department

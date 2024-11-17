@@ -1,6 +1,6 @@
 import time
 
-from pages.element_page import TextBoxPage, CheckBoxPage
+from pages.element_page import *
 
 
 class TestElement:
@@ -26,3 +26,26 @@ class TestElement:
             input_checkbox = check_box_page.get_checked_checkboxes()
             output_result = check_box_page.get_output_result()
             assert input_checkbox == output_result, "checkboxes have not been selected"
+
+    class TestRadioButton:
+
+        def test_radio_button(self, driver):
+            radio_button_page = RadioButtonPage(driver, "https://demoqa.com/radio-button")
+            radio_button_page.open()
+            button_yes = radio_button_page.click_on_the_radio_button('yes')
+            selected_button_yes = radio_button_page.read_selected()
+            button_impressive = radio_button_page.click_on_the_radio_button('impressive')
+            selected_button_impressive = radio_button_page.read_selected()
+            button_no = radio_button_page.click_on_the_radio_button('no')
+            selected_button_no = radio_button_page.read_selected()
+            assert button_yes == selected_button_yes
+            assert button_impressive == selected_button_impressive
+            assert button_no != selected_button_no
+
+    class TestWebTable:
+
+        def test_web_table_and_person(self, driver):
+            web_table_page = WebTablePage(driver, "https://demoqa.com/webtables")
+            web_table_page.open()
+            web_table_page.add_new_person()
+            time.sleep(5)
