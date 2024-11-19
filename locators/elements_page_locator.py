@@ -1,6 +1,3 @@
-from selenium.webdriver.common.by import By
-
-
 class TextBoxPageLocators:
     FULL_NAME = ('css selector', "input[id='userName']")
     EMAIL = ('css selector', "input[id='userEmail']")
@@ -30,6 +27,7 @@ class RadioButtonLocator:
 
 
 class WebTableLocator:
+    #add person form
     ADD_BUTTON = ('css selector', "button[id='addNewRecordButton']")
     FIRSTNAME_INPUT = ('css selector', "input[id='firstName']")
     LASTNAME_INPUT = ('css selector', "input[id='lastName']")
@@ -37,4 +35,7 @@ class WebTableLocator:
     AGE_INPUT = ('css selector', "input[id='age']")
     SALARY_INPUT = ('css selector', "input[id='salary']")
     DEPARTMENT_INPUT = ('css selector', "input[id='department']")
-    SUBMIT =  ('css selector', "button[id='submit']")
+    SUBMIT = ('css selector', "button[id='submit']")
+
+    #tables
+    FULL_PEOPLE_LIST = ('css selector', "div[class='rt-tr-group']")
