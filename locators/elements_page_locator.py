@@ -42,4 +42,11 @@ class WebTableLocator:
     SEARCH_INPUT = ('css selector', "input[id='searchBox']")
     DELETE_BUTTON = ('css selector', "span[title='Delete']")
     ROW_PARENT = ('xpath', ".//ancestor::div[@class='rt-tr-group']")
+    NO_ROWS_FOUND = ('css selector', "div[class='rt-noData']")
+    COUNT_ROW_LIST = ('css selector', 'select[aria-label="rows per page"]')
+
+    #update
+    UPDATE_BUTTON = ('css selector', "span[title='Edit']")
+
+
 

@@ -31,6 +31,9 @@ class BasePage:
     def go_to_element(self, element):
         self.driver.execute_script('arguments[0].scrollIntoView();', element)
 
-    def go_to_element_2(self, element):
-        self.driver.execute_script('window.scrollBy(0,1500)', element)
+    def go_to_element_2(self, s='1500'):
+        self.driver.execute_script(f'window.scrollBy(0,{s})')
+
+    def wait(self):
+        self.driver.implicitly_wait(10)
 
