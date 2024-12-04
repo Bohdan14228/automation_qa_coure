@@ -83,3 +83,9 @@ class TestElement:
             count = web_table_page.select_up_to_some_rows()
             assert count == [5, 10, 20, 25, 50, 100], \
                 "The numbers of rows in the table has not been changed or has changed incorrectly"
+
+    class TestButtonPage:
+
+        def test_different_click_of_the_button(self, driver):
+            web_table_page = ButtonPage(driver, "https://demoqa.com/buttons")
+            web_table_page.open()

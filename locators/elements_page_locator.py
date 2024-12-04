@@ -49,4 +49,10 @@ class WebTableLocator:
     UPDATE_BUTTON = ('css selector', "span[title='Edit']")
 
 
+class ButtonsPageLocators:
+    DOUBLE_BUTTON =
+    RIGHT_CLICK_BUTTON =
+    CLICK_ME_BUTTON =
+
+
 

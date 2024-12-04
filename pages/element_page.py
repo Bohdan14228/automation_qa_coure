@@ -172,3 +172,7 @@ class WebTablePage(BasePage):
     def check_count_rows(self):
         list_rows = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
         return len(list_rows)
+
+
+class ButtonPage(BasePage):
+    locators = ButtonsPageLocators()
