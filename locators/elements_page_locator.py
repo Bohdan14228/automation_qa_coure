@@ -50,9 +50,15 @@ class WebTableLocator:
 
 
 class ButtonsPageLocators:
-    DOUBLE_BUTTON =
-    RIGHT_CLICK_BUTTON =
-    CLICK_ME_BUTTON =
+    DOUBLE_BUTTON = ('css selector', 'button[id="doubleClickBtn"]')
+    RIGHT_CLICK_BUTTON = ('css selector', 'button[id="rightClickBtn"]')
+    CLICK_ME_BUTTON = ('xpath', '//div[3]/button')
+
+    #result
+    SUCCESS_DOUBLE = ('css selector', 'p[id="doubleClickMessage"]')
+    SUCCESS_RIGHT = ('css selector', 'p[id="rightClickMessage"]')
+    SUCCESS_CLICK_ME = ('css selector', 'p[id="dynamicClickMessage"]')
+
 
 
 

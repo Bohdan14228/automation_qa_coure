@@ -176,3 +176,25 @@ class WebTablePage(BasePage):
 
 class ButtonPage(BasePage):
     locators = ButtonsPageLocators()
+
+    def click_on_different_button(self, type_click):
+        # button = self.element_is_visible(self.locators.CLICK_ME_BUTTON)
+        # self.go_to_element(button)
+        # self.go_to_element_2("2000")
+        # self.action_scroll(button)
+        if type_click == 'double':
+            self.action_double_click(self.element_is_visible(self.locators.DOUBLE_BUTTON))
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)
+        if type_click == 'right':
+            self.action_right_click(self.element_is_visible(self.locators.RIGHT_CLICK_BUTTON))
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_RIGHT)
+        if type_click == 'click':
+            self.element_is_visible(self.locators.CLICK_ME_BUTTON).click()
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_CLICK_ME)
+
+    def check_clicked_on_the_button(self, element):
+        return self.element_is_present(element).text
+
+    def scroll_to_button(self):
+        button = self.element_is_visible(self.locators.CLICK_ME_BUTTON)
+        self.action_scroll(button)

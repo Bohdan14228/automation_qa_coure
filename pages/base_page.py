@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -36,4 +37,17 @@ class BasePage:
 
     def wait(self):
         self.driver.implicitly_wait(10)
+
+    def action_double_click(self, element):
+        action = ActionChains(self.driver)
+        action.double_click(element)
+        action.perform()
+
+    def action_right_click(self, element):
+        action = ActionChains(self.driver)
+        action.context_click(element)
+        action.perform()
+
+    def action_scroll(self, element):
+        ActionChains(self.driver).move_to_element(element).scroll_by_amount(1, 500).perform()
 
