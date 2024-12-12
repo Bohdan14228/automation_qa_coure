@@ -96,3 +96,18 @@ class TestElement:
             assert double == "You have done a double click", "The double click button was not pressed"
             assert right == "You have done a right click", "The right click button was not pressed"
             assert click == "You have done a dynamic click", "The dynamic click button was not pressed"
+
+    class TestLinkPage:
+
+        def test_check_link(self, driver):
+            web_table_page = LinksPage(driver, "https://demoqa.com/links")
+            web_table_page.open()
+            href_link, current_url = web_table_page.check_new_tab_simple_link()
+            assert href_link == current_url, "the link is broken or url is incorrect"
+
+        def test_broken_link(self, driver):
+            web_table_page = LinksPage(driver, "https://demoqa.com/links")
+            web_table_page.open()
+            response_code = web_table_page.check_broken_link("https://demoqa.com/bad-request")
+            assert response_code == 400, "the link works or the status code in son 400"
+

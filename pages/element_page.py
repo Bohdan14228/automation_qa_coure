@@ -5,6 +5,7 @@ from locators.elements_page_locator import *
 from pages.base_page import BasePage
 from generator.generator import generated_person
 from selenium.webdriver.support.ui import Select
+import requests
 
 
 class TextBoxPage(BasePage):
@@ -178,10 +179,6 @@ class ButtonPage(BasePage):
     locators = ButtonsPageLocators()
 
     def click_on_different_button(self, type_click):
-        # button = self.element_is_visible(self.locators.CLICK_ME_BUTTON)
-        # self.go_to_element(button)
-        # self.go_to_element_2("2000")
-        # self.action_scroll(button)
         if type_click == 'double':
             self.action_double_click(self.element_is_visible(self.locators.DOUBLE_BUTTON))
             return self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)
@@ -198,3 +195,26 @@ class ButtonPage(BasePage):
     def scroll_to_button(self):
         button = self.element_is_visible(self.locators.CLICK_ME_BUTTON)
         self.action_scroll(button)
+
+
+class LinksPage(BasePage):
+    locators = LinksPageLocators()
+
+    def check_new_tab_simple_link(self):
+        simple_link_url = self.element_is_visible(self.locators.SIMPLE_LINK)
+        link_href = simple_link_url.get_attribute('href')
+        request = requests.get(f'{link_href}')
+        if request.status_code == 200:
+            simple_link_url.click()
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            url = self.driver.current_url
+            return link_href, url
+        else:
+            return link_href, request.status_code
+
+    def check_broken_link(self, url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locators.BAD_REQUEST)
+        else:
+            return request.status_code
