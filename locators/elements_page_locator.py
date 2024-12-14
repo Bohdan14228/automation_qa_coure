@@ -65,4 +65,18 @@ class LinksPageLocators:
     BAD_REQUEST = ('css selector', "a[id='bad-request']")
 
 
+class UploadAndDownloadLocators:
+    UPLOAD_FILE = ('css selector', "input[id='uploadFile']")
+    UPLOADED_FILE = ("css selector", "p[id='uploadedFilePath']")
+    DOWNLOAD_FILE = ('css selector', "a[id='downloadButton']")
+
+
+class DynamicPropertiesPageLocators:
+    COLOR_CHANGE_BUTTON = ('css selector', 'button[id="colorChange"]')
+    COLOR_AFTER_FIVE_SEC_BUTTON = ('css selector', 'button[id="visibleAfter"]')
+    ENABLE_BUTTON = ('css selector', 'button[id="enableAfter"]')
+
+
+
+
 

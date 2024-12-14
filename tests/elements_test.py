@@ -111,3 +111,36 @@ class TestElement:
             response_code = web_table_page.check_broken_link("https://demoqa.com/bad-request")
             assert response_code == 400, "the link works or the status code in son 400"
 
+    class TestUploadAndDownload:
+
+        def test_upload_file(self, driver):
+            web_table_page = UploadAndDownload(driver, "https://demoqa.com/upload-download")
+            web_table_page.open()
+            file_name, result = web_table_page.upload_file()
+            assert file_name == result, "the file has not been uploaded"
+
+        def test_download_file(self, driver):
+            web_table_page = UploadAndDownload(driver, "https://demoqa.com/upload-download")
+            web_table_page.open()
+            check = web_table_page.download_file()
+            assert check is True, "the file has not been downloaded"
+
+    class TestDynamicPropertiesPage:
+
+        def test_dynamic_properties(self, driver):
+            web_table_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            web_table_page.open()
+            before, after = web_table_page.check_changed_of_color()
+            assert before != after
+
+        def test_appear_button(self, driver):
+            web_table_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            web_table_page.open()
+            appear = web_table_page.check_appear_of_button()
+            assert appear is True
+
+        def test_enable_button(self, driver):
+            web_table_page = DynamicPropertiesPage(driver, "https://demoqa.com/dynamic-properties")
+            web_table_page.open()
+            enable = web_table_page.check_enable_button()
+            assert enable is True
